@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
     return (
-        <div className=" min-h-14 max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto">
+        <div className=" min-h-14 max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto bg-transparent">
             <div className="flex justify-between items-center h-full py-5">
                 <div className="">
                     <Image className='w-[60%]' src={logoImg} width={200} height={200} alt='img' />
