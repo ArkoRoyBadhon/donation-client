@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <div className="w-full">
       <div className="relative w-full">
-        <div className="absolute top-0 z-10 w-full">
+        <div className=" top-0 z-10 w-full">
           <Navbar />
         </div>
         <div className="absolute bg-white w-[100%] h-[450px] opacity-80"></div>
@@ -20,7 +20,7 @@ const HomePage = () => {
               type="text"
               placeholder="Search here..."
             />
-            <div className="text-black px-2 h-full bg-[#FF444A] flex justify-center items-center">
+            <div className="text-black px-4 h-full bg-[#FF444A] flex justify-center items-center rounded-r-md">
               <IoIosSearch size={30} />
             </div>
           </div>
