@@ -2,22 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface IRootState {
   user: {
-    email: string | null;
     id: string | null;
+    email: string | null;
     name: string | null;
     role: string | null;
   };
-  // accessToken: string | null;
 }
 
 export const initialState: IRootState = {
   user: {
-    email: null,
     id: null,
+    email: null,
     name: null,
     role: null,
   },
-  // accessToken: null,
 };
 
 const userSlice = createSlice({

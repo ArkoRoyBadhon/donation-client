@@ -1,13 +1,45 @@
 "use client";
 
-import { saveUserData } from "@/utils/UserData";
+import { useLoginUserMutation } from "@/redux/features/user/userApi";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+
+
+type FormValues = {
+  email: string;
+  password: string;
+};
+
 
 const LoginElem = () => {
+  const [userLogin] = useLoginUserMutation();
+  const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    try {
+      console.log("data", data);
+      
+      const res = await userLogin(data).unwrap();
+      console.log("custom", res);
+      
+      router.push("/");
+    } catch (err: any) {
+      console.error(err.message);
+    }
+  };
+
   const handleLogin = async () => {
-    await signIn("google",{
-      callbackUrl: "/"
+    await signIn("google", {
+      callbackUrl: "/",
     });
   };
 
@@ -17,11 +49,12 @@ const LoginElem = () => {
         <h2 className="text-center text-soft-red font-bold py-5 text-[24px]">
           Login
         </h2>
-        <form className="px-5 pt-2 pb-5" action="">
+        <form onSubmit={handleSubmit(onSubmit)} className="px-5 pt-2 pb-5" action="">
           <div className="flex flex-col mb-2">
             <label className="font-semibold mb-1">Email</label>
             <input
               type="email"
+              {...register("email", { required: true })}
               placeholder="Enter Name"
               className="px-3 py-1 rounded-md outline outline-1 focus:outline-blue-400"
             />
@@ -30,6 +63,7 @@ const LoginElem = () => {
             <label className="font-semibold mb-1">Password</label>
             <input
               type={`password`}
+              {...register("password", { required: true })}
               placeholder="Enter Password"
               className="px-3 py-1 rounded-md outline outline-1 focus:outline-blue-400"
             />
