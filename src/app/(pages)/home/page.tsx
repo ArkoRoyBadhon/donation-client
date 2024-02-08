@@ -36,13 +36,18 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="md:px-20 lg:px-24 bg-red-200 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-x-5 lg:gap-x-10 gap-y-10">
-        <CardUi />
-        <CardUi />
-        <CardUi />
-        <CardUi />
-        <CardUi />
-        <CardUi />
+      <div className="mb-5">
+        <div className="md:px-20 lg:px-24 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-x-5 lg:gap-x-10 gap-y-10 px-5 ">
+          <CardUi />
+          <CardUi />
+          <CardUi />
+          <CardUi />
+        </div>
+        <div className="flex justify-center ">
+          <span className="py-2 font-semibold bg-[#FF444A] text-white px-5 rounded-md cursor-pointer">
+            See More
+          </span>
+        </div>
       </div>
     </div>
   );
