@@ -1,18 +1,19 @@
 import { AuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
-import GoogleProvider from 'next-auth/providers/google'
+import GoogleProvider from "next-auth/providers/google";
 
-export const authOptions : AuthOptions = {
-    providers: [
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID!,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET!
-        })
-    ]
-}
+const authOptions: AuthOptions = {
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+  ],
+  pages: {
+    // signIn: "https://pc-builder-snowy.vercel.app/login",
+    signIn: "/login",
+  },
+};
 
-
-const handler = NextAuth(authOptions)
-
-// export default handler
-export {handler as GET, handler as POST}
+const handler = (req: any, res: any) => NextAuth(req, res, authOptions);
+export { handler as GET, handler as POST };
