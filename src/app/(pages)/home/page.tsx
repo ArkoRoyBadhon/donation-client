@@ -2,6 +2,7 @@ import Image from "next/image";
 import bannerImg from "@/assets/banner.png";
 import Navbar from "@/components/shared/navbar";
 import { IoIosSearch } from "react-icons/io";
+import CardUi from "@/components/ui/cardUi";
 
 const HomePage = () => {
   return (
@@ -19,9 +20,9 @@ const HomePage = () => {
               type="text"
               placeholder="Search here..."
             />
-            <button className="text-black px-2 hover:bg-gray-300">
-            <IoIosSearch />
-            </button>
+            <div className="text-black px-2 h-full bg-[#FF444A] flex justify-center items-center">
+              <IoIosSearch size={30} />
+            </div>
           </div>
         </div>
         <div className="w-[100%]">
@@ -33,6 +34,15 @@ const HomePage = () => {
             alt="img"
           />
         </div>
+      </div>
+
+      <div className="md:px-20 lg:px-24 bg-red-200 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-x-5 lg:gap-x-10 gap-y-10">
+        <CardUi />
+        <CardUi />
+        <CardUi />
+        <CardUi />
+        <CardUi />
+        <CardUi />
       </div>
     </div>
   );
