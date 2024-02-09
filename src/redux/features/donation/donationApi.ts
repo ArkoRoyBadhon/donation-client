@@ -1,6 +1,6 @@
 import { api } from "../../api/apiSlice";
 
-const donationApi = api.injectEndpoints({
+const donationApi:any = api.injectEndpoints({
   endpoints: (builder) => ({
     getDonationCalculation: builder.query({
       query: () => ({
@@ -31,6 +31,21 @@ const donationApi = api.injectEndpoints({
       }),
       invalidatesTags: ["donation"],
     }),
+    deleteDonation: builder.mutation({
+      query: (id) => ({
+        url: `/donation/delete/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["donation"],
+    }),
+    updateDonation: builder.mutation({
+      query: ({ id, payload }) => ({
+        url: `/donation/update/${id}`,
+        method: "PATCH",
+        body: payload,
+      }),
+      invalidatesTags: ["donation"],
+    }),
 
   }),
 });
@@ -39,5 +54,7 @@ export const {
   useGetDonationCalculationQuery,
   useGetAllDonationCardQuery,
   useGetDonationDetailQuery,
-  useCreateDonationMutation
+  useCreateDonationMutation,
+  useDeleteDonationMutation,
+  useUpdateDonationMutation
 } = donationApi;
