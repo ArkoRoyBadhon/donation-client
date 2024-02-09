@@ -7,12 +7,14 @@ import CardUi from "@/components/ui/cardUi";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useGetAllDonationCardQuery } from "@/redux/features/donation/donationApi";
+import { useRouter } from "next/navigation";
 
 const AllHome = () => {
   const { data: session }: any = useSession();
   const [loaderCondition, setLoaderCondition] = useState<boolean>(true);
   const [searchVal, setSearchVal] = useState();
   const [searchTerm, setSearchTerm] = useState();
+  const router = useRouter()
 
   const { data: allDonationCard } = useGetAllDonationCardQuery(searchTerm);
 
@@ -62,19 +64,16 @@ const AllHome = () => {
       <div className="mb-5">
         <div className="md:px-20 lg:px-24 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-x-5 lg:gap-x-10 gap-y-10 px-5 ">
           {allDonationCard &&
-            allDonationCard?.data.map((item: any) => {
+            allDonationCard?.data?.slice(0,4).map((item: any) => {
               return (
                 <div key={item?.id} className="">
-                  <CardUi />
+                  <CardUi item={item} />
                 </div>
               );
             })}
-          {/* <CardUi />
-          <CardUi />
-          <CardUi /> */}
         </div>
         <div className="flex justify-center ">
-          <span className="py-2 font-semibold bg-[#FF444A] text-white px-5 rounded-md cursor-pointer">
+          <span onClick={()=> router.push("/donation")} className="py-2 font-semibold bg-[#FF444A] text-white px-5 rounded-md cursor-pointer">
             See More
           </span>
         </div>
