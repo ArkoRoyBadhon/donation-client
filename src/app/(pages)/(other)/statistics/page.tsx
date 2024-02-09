@@ -1,9 +1,9 @@
-import ChartElem from "@/components/ui/chart";
+import MainFile from "@/components/ui/statistics/mainFile";
 
 const StatisticsPage = () => {
     return (
         <div>
-            <ChartElem />
+            <MainFile />
         </div>
     );
 };

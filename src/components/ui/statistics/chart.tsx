@@ -13,6 +13,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Bar, Pie } from "react-chartjs-2";
+import AddDonation from "./addDonation";
 
 type CustomChartOptions = {
   plugins?: {
@@ -44,7 +45,7 @@ const ChartElem = () => {
   const options: CustomChartOptions = {
     plugins: {
       legend: {
-        position: "bottom",
+        position: "right",
       },
       datalabels: {
         color: "#fff",
@@ -63,8 +64,8 @@ const ChartElem = () => {
   };
 
   return (
-    <div className="px-20 w-full">
-      <div className=" +w-full flex justify-center">
+    <div className="px-20 w-full pt-10">
+      <div className="w-full flex justify-center">
         <div className="w-[400px]">
           <Pie
             data={{
@@ -86,6 +87,35 @@ const ChartElem = () => {
             }}
             options={options}
           />
+        </div>
+      </div>
+      <div className="mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+          <div className="py-5 text-center bg-soft-green px-10 rounded-md">
+            <p className="font-semibold text-white cursor-pointer text-[20px]">
+              Total Donor
+            </p>
+            <p className="text-white leading-10">500+</p>
+          </div>
+          <div className="py-5 bg-soft-red text-center px-10 rounded-md">
+            <p className="font-semibold text-white cursor-pointer text-[20px]">
+              Total Donation
+            </p>
+            <p className="text-white leading-10">
+              {chartData?.data?.totalDonationAmount}
+            </p>
+          </div>
+          <div className="py-5 bg-soft-green px-10 text-center rounded-md">
+            <p className="font-semibold text-white cursor-pointer text-[20px]">
+              Partner Organization
+            </p>
+            <p className="text-white leading-10">23</p>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <h2 className="font-bold text-[24px] text-soft-red">Manage Donation</h2>
+          <AddDonation />
         </div>
       </div>
     </div>

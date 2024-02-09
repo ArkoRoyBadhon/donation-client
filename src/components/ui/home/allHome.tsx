@@ -66,7 +66,7 @@ const AllHome = () => {
           {allDonationCard &&
             allDonationCard?.data?.slice(0,4).map((item: any) => {
               return (
-                <div key={item?.id} className="">
+                <div onClick={() => router.push(`/donation/${item.id}`)} key={item?.id} className="">
                   <CardUi item={item} />
                 </div>
               );

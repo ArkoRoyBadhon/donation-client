@@ -17,11 +17,27 @@ const donationApi = api.injectEndpoints({
       }),
       providesTags: ["donation"],
     }),
+    getDonationDetail: builder.query({
+      query: (id) => ({
+        url: `/donation/get-single/${id}`,
+      }),
+      providesTags: ["donation"],
+    }),
+    createDonation: builder.mutation({
+      query: (donationData) => ({
+        url: `/donation/create`,
+        method: "POST",
+        body: donationData,
+      }),
+      invalidatesTags: ["donation"],
+    }),
 
   }),
 });
 
 export const {
   useGetDonationCalculationQuery,
-  useGetAllDonationCardQuery
+  useGetAllDonationCardQuery,
+  useGetDonationDetailQuery,
+  useCreateDonationMutation
 } = donationApi;
