@@ -2,9 +2,13 @@
 
 import { useGetAllDonationCardQuery } from "@/redux/features/donation/donationApi";
 import CardUi from "./cardUi";
+import { useRouter } from "next/navigation";
 
 const DonationElem = () => {
   const { data: allDonationCard } = useGetAllDonationCardQuery(undefined);
+
+  const router = useRouter();
+
   return (
     <div className="w-full pt-10">
       <div className="mb-5">
@@ -12,7 +16,11 @@ const DonationElem = () => {
           {allDonationCard &&
             allDonationCard?.data?.map((item: any) => {
               return (
-                <div key={item?.id} className="">
+                <div
+                  onClick={() => router.push(`/donation/${item.id}`)}
+                  key={item?.id}
+                  className="cursor-pointer"
+                >
                   <CardUi item={item} />
                 </div>
               );
