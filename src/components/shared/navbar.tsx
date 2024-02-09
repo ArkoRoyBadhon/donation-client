@@ -51,7 +51,7 @@ const Navbar = () => {
               <Link href="/donation">Donation</Link>
             </li>
             <li className="">
-              <Link href="/">Statistics</Link>
+              <Link href="/statistics">Statistics</Link>
             </li>
             {session?.user?.email || userData?.data?.email ? (
               <>
