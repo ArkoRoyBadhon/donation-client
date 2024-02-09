@@ -33,32 +33,13 @@ const AddDonationModal = ({
     formState: { errors },
   } = useForm<User>();
   const onSubmit: SubmitHandler<User> = async (data) => {
-    console.log("XX", data.img[0]);
 
     const formData = new FormData();
     formData.append("img", data.img[0]);
 
-    console.log("MMM", formData);
-
     try {
-      // const responseData = await ImgUpload(img_hosting_token, formData)
-    //   ("use-server");
-    //   const response = await fetch(
-    //     `https://api.imgbb.com/1/upload?key=${img_hosting_token}`,
-    //     {
-    //       method: "POST",
-    //       //   cache: "no-store",
-    //       body: formData,
-    //     }
-    //   );
-
-    //   const responseData = await response.json();
-
-    //   console.log("response", responseData);
-
       const donationData = {
         ...data,
-        // img: responseData?.data?.url,
         category: data && data?.category?.value,
       };
 
