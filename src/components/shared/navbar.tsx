@@ -3,10 +3,32 @@ import Image from "next/image";
 import logoImg from "@/assets/logo.png";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { useGetUserQuery, useLogOutMutation } from "@/redux/features/user/userApi";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { jwtDecode } from "jwt-decode";
+import { useEffect, useState } from "react";
+import { setLoggedInfo } from "@/redux/features/user/userSlice";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  const { data: session }:any = useSession();
+  const [useriD, setUserID] = useState()
+  const { data: session }: any = useSession();
+  const [logOut, {}] = useLogOutMutation();
+  // const { user } = useAppSelector((state) => state.user);
+  const {data:userData} = useGetUserQuery(undefined)
 
+  const dispatch = useAppDispatch()
+  const router = useRouter()
+  
+  const handleLogout = async () => {
+    signOut();
+    await logOut(undefined);
+    localStorage.setItem("accessToken", "");
+  };
+
+  useEffect(()=> {
+    dispatch(setLoggedInfo(userData?.data))
+  },[userData])
 
   return (
     <div className=" min-h-14 max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto bg-transparent z-12">
@@ -31,16 +53,23 @@ const Navbar = () => {
             <li className="">
               <Link href="/">Statistics</Link>
             </li>
-            {session?.user?.email ? (
+            {session?.user?.email || userData?.data?.email ? (
               <>
                 <li className="">
-                  <Link onClick={()=> signOut()} href="/login">Logout</Link>
+                  <Link onClick={() => handleLogout()} href="/login">
+                    Logout
+                  </Link>
                 </li>
               </>
             ) : (
-              <li className="">
-                <Link href="/login">Login</Link>
-              </li>
+              <>
+                <li className="">
+                  <Link href="/login">Login</Link>
+                </li>
+                <li className="">
+                  <Link href="/login">Register</Link>
+                </li>
+              </>
             )}
           </ul>
         </div>

@@ -4,7 +4,7 @@ const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getUser: builder.query({
       query: () => ({
-        url: `/auth/user`,
+        url: `/auth/get-user`,
       }),
       providesTags: ["user"],
     }),

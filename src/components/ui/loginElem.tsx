@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { useForm, SubmitHandler } from "react-hook-form";
-
+import { useAppDispatch } from "@/redux/hook";
 
 
 type FormValues = {
@@ -17,6 +17,7 @@ type FormValues = {
 const LoginElem = () => {
   const [userLogin] = useLoginUserMutation();
   const router = useRouter();
+  const dispatch = useAppDispatch()
 
   const {
     register,
@@ -26,10 +27,10 @@ const LoginElem = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      console.log("data", data);
-      
       const res = await userLogin(data).unwrap();
-      console.log("custom", res);
+      if (res?.data.accessToken) {
+        localStorage.setItem("accessToken", res?.data?.accessToken);
+      }
       
       router.push("/");
     } catch (err: any) {
