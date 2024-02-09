@@ -7,10 +7,21 @@ const donationApi = api.injectEndpoints({
         url: `/donation/calculation`,
       }),
       providesTags: ["donation"],
-    })
+    }),
+    getAllDonationCard: builder.query({
+      query: (searchTerm) => ({
+        url: `/donation/get-all`,
+        params: {
+            ...(searchTerm && {searchTerm: searchTerm})
+        }
+      }),
+      providesTags: ["donation"],
+    }),
+
   }),
 });
 
 export const {
-  useGetDonationCalculationQuery
+  useGetDonationCalculationQuery,
+  useGetAllDonationCardQuery
 } = donationApi;

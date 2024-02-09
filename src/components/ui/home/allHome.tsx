@@ -6,14 +6,23 @@ import { IoIosSearch } from "react-icons/io";
 import CardUi from "@/components/ui/cardUi";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { useGetAllDonationCardQuery } from "@/redux/features/donation/donationApi";
 
 const AllHome = () => {
   const { data: session }: any = useSession();
   const [loaderCondition, setLoaderCondition] = useState<boolean>(true);
+  const [searchVal, setSearchVal] = useState();
+  const [searchTerm, setSearchTerm] = useState();
+
+  const { data: allDonationCard } = useGetAllDonationCardQuery(searchTerm);
 
   if (!loaderCondition) {
     return <div className="">Loading...</div>;
   }
+
+  const handleSearch = () => {
+    setSearchTerm(searchVal);
+  };
 
   return (
     <div className="w-full">
@@ -26,11 +35,15 @@ const AllHome = () => {
           <h1>I Grow By helping people in need</h1>
           <div className="border border-gray-400 flex justify-center items-center rounded-md mt-5 bg-white">
             <input
+              onChange={(e: any) => setSearchVal(e.target.value)}
               className="text-[16px] px-5 py-2 rounded-md outline-none m-0"
               type="text"
               placeholder="Search here..."
             />
-            <div className="text-black px-4 h-full bg-[#FF444A] flex justify-center items-center rounded-r-md">
+            <div
+              className="text-black px-4 h-full bg-[#FF444A] flex justify-center items-center rounded-r-md"
+              onClick={() => handleSearch()}
+            >
               <IoIosSearch size={30} />
             </div>
           </div>
@@ -48,10 +61,17 @@ const AllHome = () => {
 
       <div className="mb-5">
         <div className="md:px-20 lg:px-24 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-x-5 lg:gap-x-10 gap-y-10 px-5 ">
+          {allDonationCard &&
+            allDonationCard?.data.map((item: any) => {
+              return (
+                <div key={item?.id} className="">
+                  <CardUi />
+                </div>
+              );
+            })}
+          {/* <CardUi />
           <CardUi />
-          <CardUi />
-          <CardUi />
-          <CardUi />
+          <CardUi /> */}
         </div>
         <div className="flex justify-center ">
           <span className="py-2 font-semibold bg-[#FF444A] text-white px-5 rounded-md cursor-pointer">
