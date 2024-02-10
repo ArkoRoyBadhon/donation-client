@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/user/userSlice";
+import donationReducer from "./features/donation/donationSlice";
 import { api } from "./api/apiSlice";
 
 
 const store = configureStore({
   reducer: {
     user: userReducer,
+    donation: donationReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

@@ -23,8 +23,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setLoggedInfo: (state, action) => {
+      state.user.id = action?.payload?.id || null;
       state.user.email = action?.payload?.email || null;
-      state.user.id = action?.payload?._id || null;
       state.user.name = action?.payload?.name || null;
       state.user.role = action?.payload?.role || null;
     },
