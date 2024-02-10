@@ -3,7 +3,7 @@ import Image from "next/image";
 import logoImg from "@/assets/logo.png";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-import { useGetUserQuery, useLogOutMutation } from "@/redux/features/user/userApi";
+import { useCreateUserMutation, useGetUserQuery, useLogOutMutation } from "@/redux/features/user/userApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
@@ -14,8 +14,8 @@ const Navbar = () => {
   const [useriD, setUserID] = useState()
   const { data: session }: any = useSession();
   const [logOut, {}] = useLogOutMutation();
-  // const { user } = useAppSelector((state) => state.user);
   const {data:userData} = useGetUserQuery(undefined)
+  const [createUser] = useCreateUserMutation(undefined)
 
   const dispatch = useAppDispatch()
   const router = useRouter()
@@ -24,11 +24,15 @@ const Navbar = () => {
     signOut();
     await logOut(undefined);
     localStorage.setItem("accessToken", "");
+    localStorage.setItem("access_email", "");
   };
 
   useEffect(()=> {
     dispatch(setLoggedInfo(userData?.data))
-  },[userData])
+    localStorage.setItem("access_email",session?.user?.email)
+    console.log("sess", session);
+    
+  },[userData,session])
 
   return (
     <div className=" min-h-14 max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto bg-transparent z-12">
@@ -67,7 +71,7 @@ const Navbar = () => {
                   <Link href="/login">Login</Link>
                 </li>
                 <li className="">
-                  <Link href="/login">Register</Link>
+                  <Link href="/register">Register</Link>
                 </li>
               </>
             )}

@@ -7,13 +7,10 @@ import UserStatistics from "./userStatistics";
 const MainFile = () => {
   const { user } = useAppSelector((state) => state.user);
   const { data: session }: any = useSession();
-
-  console.log("session", session);
   
-
   return <div>
     {user?.role === "admin" && <ChartElem />}
-    {(user?.role !== "admin" && session?.user?.email) && <UserStatistics />}
+    {(user?.role === "user") && <UserStatistics />}
     {(!user.role && !session) && <div className="">
         Please Login First
     </div> }

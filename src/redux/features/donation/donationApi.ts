@@ -46,6 +46,12 @@ const donationApi:any = api.injectEndpoints({
       }),
       invalidatesTags: ["donation"],
     }),
+    getUserBasedDonation: builder.query({
+      query: () => ({
+        url: `/donation/user-donate`
+      }),
+      providesTags: ["donation"],
+    }),
 
   }),
 });
@@ -56,5 +62,6 @@ export const {
   useGetDonationDetailQuery,
   useCreateDonationMutation,
   useDeleteDonationMutation,
-  useUpdateDonationMutation
+  useUpdateDonationMutation,
+  useGetUserBasedDonationQuery
 } = donationApi;

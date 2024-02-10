@@ -24,7 +24,6 @@ type CustomChartOptions = {
 
 ChartJS.register(
   BarElement,
-  // PieController,
   Tooltip,
   Legend,
   CategoryScale,
@@ -64,10 +63,46 @@ const ChartElem = () => {
     },
   };
 
+  const BarOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+        text: 'Donation',
+      },
+    },
+  };
+
   return (
     <div className="px-20 w-full pt-10">
-      <div className="w-full flex justify-center">
-        <div className="w-[400px]">
+      <div className="w-full flex flex-col md:flex-row justify-between gap-5 items-center">
+      <div className="md:w-[50%] w-full flex justify-center">
+          <Bar
+          className="w-full"
+            data={{
+              //   labels: ["A", "B", "C"],
+              labels: labels,
+              datasets: [
+                {
+                  label: "total",
+                  data: data,
+                  backgroundColor: [
+                    "rgba(255, 99, 132, 0.6)",
+                    "rgba(54, 162, 235, 0.6)",
+                    "rgba(255, 206, 86, 0.6)",
+                    "rgba(75, 192, 192, 0.6)",
+                    "rgba(153, 102, 255, 0.6)",
+                  ],
+                },
+              ],
+            }}
+            options={BarOptions}
+          />
+        </div>
+        <div className="md:w-[40%] w-full flex justify-center">
           <Pie
             data={{
               //   labels: ["A", "B", "C"],
