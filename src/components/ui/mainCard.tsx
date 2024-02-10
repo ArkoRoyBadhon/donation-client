@@ -6,7 +6,7 @@ const MainCard = ({ item }: any) => {
 
   return (
     <div
-      className={` shadow-md h-[210px] rounded-md 
+      className={` shadow-md h-[150px] md:h-[210px] rounded-md 
       ${
         (item?.category === ("food" || "education" || "health")) && "bg-light-blue"
       }
@@ -24,7 +24,7 @@ const MainCard = ({ item }: any) => {
           height={300}
         />
       </div>
-      <div className="px-4 pt-4 w-[50%]">
+      <div className="px-4 pt-2 md:pt-4 w-[50%]">
         <div
           className={`bg-[#AEC8FF] w-fit px-5 py-[2px] rounded-md text-[#0052FF] font-bold`}
         >
@@ -36,11 +36,11 @@ const MainCard = ({ item }: any) => {
           {item.title.slice(0, 16)}..
         </h4>
         <h6
-          className={`text-blue-400 mt-2 font-bold text-[14px] md:text-[20px]`}
+          className={`text-blue-400 md:mt-2 font-bold text-[14px] md:text-[20px]`}
         >
           {item.subCategory}
         </h6>
-        <div className="px-5 py-2 bg-soft-red mt-7 font-semibold text-white cursor-pointer rounded-sm text-[14px] md:text-[20px] w-fit">
+        <div className="px-3 md:px-5 py-2 bg-soft-red mt-2 md:mt-7 font-semibold text-white cursor-pointer rounded-sm text-[12px] md:text-[20px] w-fit">
           View Details
         </div>
       </div>

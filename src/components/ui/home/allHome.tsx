@@ -29,16 +29,16 @@ const AllHome = () => {
   return (
     <div className="w-full">
       <div className="relative w-full">
-        <div className=" top-0 z-10 w-full">
+        <div className=" top-0 z-5 w-full">
           <Navbar />
         </div>
         <div className="absolute bg-white w-[100%] h-[450px] opacity-80"></div>
-        <div className="absolute w-[100%] h-[450px] opacity-80 flex flex-col justify-center items-center capitalize text-[36px] font-bold text-black z-10">
-          <h1>I Grow By helping people in need</h1>
-          <div className="border border-gray-400 flex justify-center items-center rounded-md mt-5 bg-white">
+        <div className="absolute w-[100%] h-[350px] md:h-[450px] opacity-80 flex flex-col justify-center items-center capitalize text-[28px] md:text-[36px] font-bold text-black z-5">
+          <h1 className="text-center">I Grow By helping people in need</h1>
+          <div className="border w-[70%] border-gray-400 flex justify-center items-center rounded-md mt-5 bg-white">
             <input
               onChange={(e: any) => setSearchVal(e.target.value)}
-              className="text-[16px] px-5 py-2 rounded-md outline-none m-0"
+              className="text-[16px] px-5 py-2 rounded-md outline-none m-0 w-full"
               type="text"
               placeholder="Search here..."
             />
@@ -52,7 +52,7 @@ const AllHome = () => {
         </div>
         <div className="w-[100%]">
           <Image
-            className="w-[100%] h-[450px] bg-contain"
+            className="w-[100%] h-[350px] md:h-[450px] bg-contain"
             src={bannerImg}
             width={800}
             height={800}

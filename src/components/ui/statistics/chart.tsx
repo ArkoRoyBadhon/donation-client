@@ -77,13 +77,11 @@ const ChartElem = () => {
   };
 
   return (
-    <div className="px-20 w-full pt-10">
+    <div className="px-5 md:px-28 w-full pt-10">
       <div className="w-full flex flex-col md:flex-row justify-between gap-5 items-center">
-      <div className="md:w-[50%] w-full flex justify-center">
+      <div className="md:w-[50%] w-full h-[200px] md:h-full flex justify-center">
           <Bar
-          className="w-full"
             data={{
-              //   labels: ["A", "B", "C"],
               labels: labels,
               datasets: [
                 {
@@ -105,7 +103,6 @@ const ChartElem = () => {
         <div className="md:w-[40%] w-full flex justify-center">
           <Pie
             data={{
-              //   labels: ["A", "B", "C"],
               labels: labels,
               datasets: [
                 {

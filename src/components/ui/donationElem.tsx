@@ -12,7 +12,7 @@ const DonationElem = () => {
   return (
     <div className="w-full pt-10">
       <div className="mb-5">
-        <div className="md:px-20 lg:px-24 py-10 grid grid-cols-1 md:grid-cols-2 md:gap-x-5 lg:gap-x-10 gap-y-10 px-5 ">
+        <div className="px-5 md:px-28 py-10 grid grid-cols-1 md:grid-cols-2 md:gap-x-5 lg:gap-x-10 gap-y-10">
           {allDonationCard &&
             allDonationCard?.data?.map((item: any) => {
               return (

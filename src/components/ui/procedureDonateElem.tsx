@@ -28,7 +28,7 @@ const ProcedureDonateElem = () => {
   };
 
   return (
-    <div className="px-20 pt-10">
+    <div className="px-5 md:px-30 pt-10">
       <div className="">
         <h2 className="font-semibold text-center text-soft-red text-[28px]">
           Proceed Your Donation
@@ -39,7 +39,7 @@ const ProcedureDonateElem = () => {
           </div>
         ) : (
           <div className="flex justify-center mt-20">
-            <div className="border w-[500px] p-10 rounded-md">
+            <div className="border w-full mx-5 md:w-[500px] p-10 rounded-md">
               <h4 className="font-semibold text-[20px]">{donation?.title}</h4>
               <h4 className="text-[16px]">{donation?.category}</h4>
               <input

@@ -42,11 +42,8 @@ const AddDonationModal = ({
         ...data,
         category: data && data?.category?.value,
       };
-
-      console.log("ss", donationData);
-
         await createDonation(donationData);
-      //   reset();
+        reset();
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -69,7 +66,7 @@ const AddDonationModal = ({
 
   return (
     <div
-      className={`fixed top-[100px] min-h-fit pb-10 bg-gray-200 shadow-md w-[400px] rounded-md overflow-hidden ${
+      className={`fixed top-[100px] min-h-fit pb-10 bg-gray-200 shadow-md w-[350px] md:w-[400px] rounded-md overflow-hidden ${
         addModalOpen ? "block" : "hidden"
       }`}
     >
@@ -85,7 +82,7 @@ const AddDonationModal = ({
         </div>
       </div>
       <div className="">
-        <h3 className="text-center font-bold underline text-lg">Edit User</h3>
+        <h3 className="text-center font-bold underline text-lg">Add Donation</h3>
         <div className="mt-10 w-full ">
           <form className="w-full px-10" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col mb-2">

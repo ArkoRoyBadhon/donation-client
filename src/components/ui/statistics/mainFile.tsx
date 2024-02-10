@@ -11,7 +11,7 @@ const MainFile = () => {
   return <div>
     {user?.role === "admin" && <ChartElem />}
     {(user?.role === "user") && <UserStatistics />}
-    {(!user.role && !session) && <div className="">
+    {(!user.role && !session) && <div className="px-5 md:px-28 h-[100vh] flex justify-center items-center">
         Please Login First
     </div> }
   </div>;

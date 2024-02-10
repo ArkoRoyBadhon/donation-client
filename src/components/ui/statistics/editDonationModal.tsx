@@ -1,5 +1,8 @@
 // "use client";
-import { useCreateDonationMutation, useUpdateDonationMutation } from "@/redux/features/donation/donationApi";
+import {
+  useCreateDonationMutation,
+  useUpdateDonationMutation,
+} from "@/redux/features/donation/donationApi";
 import ImgUpload from "@/utils/ImgUpload";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Select from "react-select";
@@ -16,19 +19,18 @@ interface User {
 const EditDonationModal = ({
   editModalOpen,
   setEditModalOpen,
-  editMOdalData
+  editMOdalData,
 }: {
   editModalOpen: boolean;
   setEditModalOpen: any;
-  editMOdalData: any
+  editMOdalData: any;
 }) => {
   const [updateDonation, { isSuccess, error }] = useUpdateDonationMutation();
   const img_hosting_token = process.env.NEXT_PUBLIC_IMAGE_UPLOAD;
 
-
   console.log("datt", editMOdalData);
-  
-//   let id = editMOdalData && editMOdalData?.id
+
+  //   let id = editMOdalData && editMOdalData?.id
 
   const {
     control,
@@ -44,12 +46,13 @@ const EditDonationModal = ({
         category: data && data?.category?.value,
       };
 
-      const {id,...payload} = donationData
+      const { id, ...payload } = donationData;
       const info = {
-        id, payload
-      }
-      
-        await updateDonation(info);
+        id,
+        payload,
+      };
+
+      await updateDonation(info);
       //   reset();
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -73,7 +76,7 @@ const EditDonationModal = ({
 
   return (
     <div
-      className={`fixed top-[100px] min-h-fit pb-10 bg-gray-200 shadow-md w-[400px] rounded-md overflow-hidden ${
+      className={`fixed top-[100px] min-h-fit pb-10 bg-gray-200 shadow-md w-[350px] md:w-[400px] rounded-md overflow-hidden ${
         editModalOpen ? "block" : "hidden"
       }`}
     >
@@ -89,7 +92,9 @@ const EditDonationModal = ({
         </div>
       </div>
       <div className="">
-        <h3 className="text-center font-bold underline text-lg">Edit Donation</h3>
+        <h3 className="text-center font-bold underline text-lg">
+          Edit Donation
+        </h3>
         <div className="mt-10 w-full ">
           <form className="w-full px-10" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col mb-2">
@@ -198,7 +203,7 @@ const EditDonationModal = ({
               <input
                 className="bg-soft-green py-2 rounded-md cursor-pointer text-white mx-auto w-full md:w-[60%]"
                 type="submit"
-                value="Add Donation"
+                value="Edit Donation"
               />
             </div>
           </form>
@@ -207,6 +212,5 @@ const EditDonationModal = ({
     </div>
   );
 };
-
 
 export default EditDonationModal;
