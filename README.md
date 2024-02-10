@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Donation WebSite
 
-## Getting Started
-
-First, run the development server:
+### Front End Live Link
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+https://donation-client-opal.vercel.app
+```
+### Back End Live Link
+
+```bash
+https://donation-server-prisma.vercel.app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Front End Github Link
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+https://github.com/ArkoRoyBadhon/donation-client
+```
+### Back End Github Link
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+https://github.com/ArkoRoyBadhon/donation-server-prisma
+```
 
-## Learn More
+### FrontEnd Technologies
+- Typescript
+- Next JS 14 (App Router)
+- Tailwind CSS
+- Redux Toolkit with RTK Query
+- React Chart JS
 
-To learn more about Next.js, take a look at the following resources:
+### Backend Technologies
+- Typescript
+- Node JS
+- Express JS
+- Prisma ORM
+- PostgreSQL
+- JsonWebToken (JWT)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Project Features
+- Custom user Authentication and Authorization
+- Working WIth Donation Forms and processing
+- Donation Statistics and DashBoard Control
+- Responsive Design and mobile optimization
+- Chart for Data visualization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+### Login Info
+#### admin login
+```bash
+admin@gmail.com
+```
+```bash
+1234
+```
+#### Normal User login
+```bash
+test@gmail.com
+```
+```bash
+1234
+```
+`You can also registration as a new normal user`
+`Admin user (role) is already fixed on database`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
