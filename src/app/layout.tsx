@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import ReduxProvider from "@/components/shared/ReduxProvider";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,5 +15,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <ReduxProvider>{children}</ReduxProvider>;
+  return (
+    <ReduxProvider>
+      {children}
+      <ToastContainer />
+    </ReduxProvider>
+  );
 }

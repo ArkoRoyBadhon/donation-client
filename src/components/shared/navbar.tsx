@@ -13,6 +13,7 @@ import { setLoggedInfo } from "@/redux/features/user/userSlice";
 import { usePathname } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { data: session }: any = useSession();
@@ -29,6 +30,9 @@ const Navbar = () => {
     await logOut(undefined);
     localStorage.setItem("accessToken", "");
     localStorage.setItem("access_email", "");
+    toast("Logout SuccessFully", {
+      toastId: "logout"
+    })
   };
   
 
@@ -109,7 +113,7 @@ const Navbar = () => {
         </div>
         <div
           className={`fixed md:hidden z-10 transition-all ease-in top-[0px] bg-white h-[100vh] w-[100vw] p-5 ${
-            mobileMenu ? "right-[0px] " : "right-[500px]"
+            mobileMenu ? "right-[0px] " : "right-[800px]"
           }`}
         >
           <div className="flex justify-end">

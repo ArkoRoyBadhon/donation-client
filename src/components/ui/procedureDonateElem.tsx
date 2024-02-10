@@ -2,20 +2,22 @@
 import { useCreateUserDonationMutation } from "@/redux/features/donation/donationApi";
 import { useAppSelector } from "@/redux/hook";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ProcedureDonateElem = () => {
   const { donation } = useAppSelector((state) => state.donation);
   const { user } = useAppSelector((state) => state.user);
- const [createUserDonation] = useCreateUserDonationMutation()
+ const [createUserDonation, {isSuccess, error}] = useCreateUserDonationMutation()
   const [amountVal, setAmountVal] = useState<number>(100);
 
   const handleProceed = async () => {
     if (amountVal <= 99) {
-      alert(`not less than ${amountVal}tk`);
+      toast(`not less than ${amountVal}tk`, {
+        toastId: "procedure"
+      })
     }
 
     if (amountVal >= 100) {
-    //   alert(amountVal);
 
       const donationData = {
         userId: user?.id,
@@ -26,6 +28,17 @@ const ProcedureDonateElem = () => {
        await createUserDonation(donationData)
     }
   };
+
+  if (isSuccess) {
+    toast("Donation payment Successfully", {
+      toastId: "donation-pay"
+    })
+  }
+  if (error) {
+    toast("Donation Faied to pay", {
+      toastId: "donation-pay-failed"
+    })
+  }
 
   return (
     <div className="px-5 md:px-30 pt-10">

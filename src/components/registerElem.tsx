@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppDispatch } from "@/redux/hook";
+import { toast } from "react-toastify";
 
 type FormValues = {
   name: string;
@@ -30,10 +31,14 @@ const RegisterElem = () => {
       if (res?.data.accessToken) {
         localStorage.setItem("accessToken", res?.data?.accessToken);
       }
-
+      toast("Registration SuccessFully", {
+        toastId: "registration"
+      })
       router.push("/login");
     } catch (err: any) {
-      console.error(err.message);
+      toast("Registration Failed", {
+        toastId: "registration-failed"
+      })
     }
   };
 

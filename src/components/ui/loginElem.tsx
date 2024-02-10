@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppDispatch } from "@/redux/hook";
+import { toast } from "react-toastify";
 
 
 type FormValues = {
@@ -32,9 +33,14 @@ const LoginElem = () => {
         localStorage.setItem("accessToken", res?.data?.accessToken);
       }
       
+      toast("Logged in SuccessFully", {
+        toastId: "login"
+      })
       router.push("/");
     } catch (err: any) {
-      console.error(err.message);
+      toast("Login Failed", {
+        toastId: "login-failed"
+      })
     }
   };
 

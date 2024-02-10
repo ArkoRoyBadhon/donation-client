@@ -3,6 +3,7 @@ import { useCreateDonationMutation } from "@/redux/features/donation/donationApi
 import ImgUpload from "@/utils/ImgUpload";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Select from "react-select";
+import { toast } from "react-toastify";
 
 interface User {
   id?: string;
@@ -23,7 +24,6 @@ const AddDonationModal = ({
   const [createDonation, { isSuccess, error }] = useCreateDonationMutation();
   const img_hosting_token = process.env.NEXT_PUBLIC_IMAGE_UPLOAD;
 
-  console.log("img", img_hosting_token);
 
   const {
     control,
@@ -50,10 +50,14 @@ const AddDonationModal = ({
   };
 
   if (isSuccess) {
-    console.log("Donation added");
+    toast("Donation Added", {
+      toastId: "donation-add"
+    })
   }
   if (error) {
-    console.log("failed");
+    toast("Donation Faied to Add", {
+      toastId: "donation-failed"
+    })
   }
 
   const categoryOptions: any = [

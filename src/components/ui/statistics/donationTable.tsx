@@ -5,6 +5,7 @@ import {
 } from "@/redux/features/donation/donationApi";
 import { useState } from "react";
 import EditDonationModal from "./editDonationModal";
+import { toast } from "react-toastify";
 
 const DonationTable = () => {
   const { data: allDonation } = useGetAllDonationCardQuery(undefined);
@@ -13,7 +14,9 @@ const DonationTable = () => {
   const [editModalData, setEditModalData] = useState<any>()
 
   if(isSuccessDel) {
-    console.log("Deleted");
+    toast("Donation Card deleted Successsfully", {
+      toastId: "donation-delete"
+    })
     
   }
 

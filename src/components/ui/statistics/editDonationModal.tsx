@@ -6,6 +6,7 @@ import {
 import ImgUpload from "@/utils/ImgUpload";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Select from "react-select";
+import { toast } from "react-toastify";
 
 interface User {
   id?: string;
@@ -60,10 +61,14 @@ const EditDonationModal = ({
   };
 
   if (isSuccess) {
-    console.log("Donation added");
+    toast("Donation updaded Successfully", {
+      toastId: "donation-update"
+    })
   }
   if (error) {
-    console.log("failed");
+    toast("Donation Faied to update", {
+      toastId: "donation-update-failed"
+    })
   }
 
   const categoryOptions: any = [
