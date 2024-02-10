@@ -3,22 +3,23 @@ import Image from "next/image";
 import logoImg from "@/assets/logo.png";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-import { useCreateUserMutation, useGetUserQuery, useLogOutMutation } from "@/redux/features/user/userApi";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { jwtDecode } from "jwt-decode";
-import { useEffect, useState } from "react";
+import { useGetUserQuery, useLogOutMutation } from "@/redux/features/user/userApi";
+import { useAppDispatch} from "@/redux/hook";
+import { useEffect } from "react";
 import { setLoggedInfo } from "@/redux/features/user/userSlice";
-import { useRouter } from "next/navigation";
+import { useRouter,usePathname  } from "next/navigation";
 
 const Navbar = () => {
-  const [useriD, setUserID] = useState()
   const { data: session }: any = useSession();
   const [logOut, {}] = useLogOutMutation();
   const {data:userData} = useGetUserQuery(undefined)
-  const [createUser] = useCreateUserMutation(undefined)
 
   const dispatch = useAppDispatch()
   const router = useRouter()
+  const pathname = usePathname().slice(1)
+
+  console.log("pathName", pathname);
+  
   
   const handleLogout = async () => {
     signOut();
@@ -30,7 +31,6 @@ const Navbar = () => {
   useEffect(()=> {
     dispatch(setLoggedInfo(userData?.data))
     localStorage.setItem("access_email",session?.user?.email)
-    console.log("sess", session);
     
   },[userData,session])
 
@@ -47,14 +47,14 @@ const Navbar = () => {
           />
         </div>
         <div className="">
-          <ul className="flex gap-8 font-semibold text-[16px]">
-            <li className="">
+          <ul className="flex gap-5 font-semibold text-[16px]">
+            <li className={`${pathname === "home" && "text-soft-red underline"} `}>
               <Link href="/">Home</Link>
             </li>
-            <li className="">
+            <li className={`${pathname === "donation" && "text-soft-red underline"} `}>
               <Link href="/donation">Donation</Link>
             </li>
-            <li className="">
+            <li className={`${pathname === "statistics" && "text-soft-red underline"} `}>
               <Link href="/statistics">Statistics</Link>
             </li>
             {session?.user?.email || userData?.data?.email ? (
@@ -67,10 +67,10 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <li className="">
+                <li className={`${pathname === "login" && "text-soft-red underline"} `}>
                   <Link href="/login">Login</Link>
                 </li>
-                <li className="">
+                <li className={`${pathname === "register" && "text-soft-red underline"} `}>
                   <Link href="/register">Register</Link>
                 </li>
               </>
