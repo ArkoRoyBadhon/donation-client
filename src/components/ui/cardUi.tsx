@@ -6,10 +6,15 @@ const CardUi = ({ item }: any) => {
 
   return (
     <div
-      className={`w-full lg:w-[300px] shadow-md h-[350px] rounded-md bg-[#D9E5FF] cursor-pointer`}
+      className={`shadow-md h-[300px] rounded-md ${
+        (item?.category === ("food" || "education" || "health")) && "bg-light-blue"
+      }
+      ${
+        item?.category === ("clothing" || "religion") && "bg-light-green"
+      } cursor-pointer`}
     >
       <Image
-        className="w-full bg-contain h-[65%]"
+        className="w-full bg-contain h-[65%] rounded-t-md"
         src={item?.img}
         alt="img"
         width={300}

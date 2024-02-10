@@ -15,7 +15,9 @@ const config: Config = {
       },
       colors: {
         'soft-red': "#FF444A",
-        'soft-green': '#6fc276'
+        'soft-green': '#6fc276',
+        "light-blue": "#D9E5FF",
+        "light-green": "#EBF6E2"
       }
     },
   },
