@@ -84,14 +84,14 @@ const LoginElem = () => {
           </div>
         </form>
 
-        <div className="relative mb-5 mx-5">
+        {/* <div className="relative mb-5 mx-5">
           <hr />
           <span className="absolute top-[-10px] bg-white rounded-full left-[46%] w-[30px] text-center">
             OR
           </span>
-        </div>
+        </div> */}
 
-        <div className="flex justify-center mx-5">
+        {/* <div className="flex justify-center mx-5">
           <div
             onClick={() => handleLogin()}
             className="mt-2 cursor-pointer w-full"
@@ -101,7 +101,7 @@ const LoginElem = () => {
               <p className="font-semibold">Login with Google</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

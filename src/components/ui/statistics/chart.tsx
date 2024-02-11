@@ -15,6 +15,7 @@ import {
 import { Bar, Pie } from "react-chartjs-2";
 import AddDonation from "./addDonation";
 import DonationTable from "./donationTable";
+import MakeAdmin from "./makeAdmin";
 
 type CustomChartOptions = {
   plugins?: {
@@ -151,6 +152,9 @@ const ChartElem = () => {
           <AddDonation />
 
           <DonationTable />
+
+          <h2 className="font-bold text-[24px] text-soft-red">Manage Users</h2>
+          <MakeAdmin />
         </div>
       </div>
     </div>

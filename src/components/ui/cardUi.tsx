@@ -2,7 +2,6 @@ import Image from "next/image";
 import foodImg from "@/assets/food.png";
 
 const CardUi = ({ item }: any) => {
-  console.log("data", item);
 
   return (
     <div

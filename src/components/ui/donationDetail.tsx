@@ -14,7 +14,7 @@ const DonationDetail = ({ id }: { id: string }) => {
 
 
   return (
-    <div className="px-5 md:px-30">
+    <div className="px-5 md:px-28">
       <div className="relative">
         <div className="flex justify-center">
           <Image
@@ -28,7 +28,7 @@ const DonationDetail = ({ id }: { id: string }) => {
         <div className="absolute w-full bg-black h-[80px] md:h-[100px] z-5 bottom-0 opacity-50 "></div>
         <div className="absolute flex justify-start items-center bottom-0 h-[80px] md:h-[100px]">
           <div onClick={()=> {dispatch(setDonationInfo(donationData?.data)); router.push("/donation/procedure")} } className="text-white px-5 bg-soft-red ml-5 py-2 rounded-sm z-6 cursor-pointer">
-            Donate 500 BDT
+            Donate 100 BDT
           </div>
         </div>
       </div>

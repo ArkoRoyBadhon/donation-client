@@ -2,16 +2,24 @@ import Image from "next/image";
 import foodImg from "@/assets/food.png";
 
 const MainCard = ({ item }: any) => {
-  console.log("data", item);
 
   return (
     <div
       className={` shadow-md h-[150px] md:h-[210px] rounded-md 
       ${
-        (item?.category === ("food" || "education" || "health")) && "bg-light-blue"
+        item?.category === "food" && "bg-light-blue"
       }
       ${
-        item?.category === ("clothing" || "religion") && "bg-light-green"
+        item?.category === "education" && "bg-light-blue"
+      }
+      ${
+        item?.category === "health" && "bg-light-green"
+      }
+      ${
+        item?.category === "clothing" && "bg-light-green"
+      }
+      ${
+        item?.category === "religion" && "bg-light-green"
       }
        cursor-pointer flex`}
     >

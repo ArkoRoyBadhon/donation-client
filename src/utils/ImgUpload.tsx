@@ -1,7 +1,6 @@
 
 
 const ImgUpload = async (img_hosting_token:any,formData:any) => {
-    console.log(formData);
     
   const response = await fetch(
     `https://api.imgbb.com/1/upload?key=${img_hosting_token}`,

@@ -2,7 +2,7 @@ import MainFile from "@/components/ui/statistics/mainFile";
 
 const StatisticsPage = () => {
     return (
-        <div>
+        <div className="m-h-[100vh]">
             <MainFile />
         </div>
     );

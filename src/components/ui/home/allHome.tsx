@@ -9,6 +9,8 @@ import { useState } from "react";
 import { useGetAllDonationCardQuery } from "@/redux/features/donation/donationApi";
 import { useRouter } from "next/navigation";
 import SkeletonCard from "../skeleton/skeletonCard";
+import TimeAct from "./timeAct";
+import FollowUs from "./followUs";
 
 const AllHome = () => {
   const { data: session }: any = useSession();
@@ -87,6 +89,9 @@ const AllHome = () => {
           </>
         )}
       </div>
+
+      <TimeAct />
+      <FollowUs />
     </div>
   );
 };

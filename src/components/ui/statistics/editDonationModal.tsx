@@ -29,7 +29,6 @@ const EditDonationModal = ({
   const [updateDonation, { isSuccess, error }] = useUpdateDonationMutation();
   const img_hosting_token = process.env.NEXT_PUBLIC_IMAGE_UPLOAD;
 
-  console.log("datt", editMOdalData);
 
   //   let id = editMOdalData && editMOdalData?.id
 
