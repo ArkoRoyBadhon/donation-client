@@ -19,7 +19,7 @@ const DonationDetail = ({ id }: { id: string }) => {
         <div className="flex justify-center">
           <Image
             className="w-full md:h-[500px] bg-contain rounded-lg"
-            src={img}
+            src={donationData?.data?.img}
             alt=""
             width="800"
             height="800"

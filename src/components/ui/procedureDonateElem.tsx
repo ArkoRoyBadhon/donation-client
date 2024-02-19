@@ -61,7 +61,7 @@ const ProcedureDonateElem = () => {
                 placeholder="Amount"
                 className="border outline-none px-2 py-2 mt-2"
                 defaultValue="100"
-              />
+              /> <span>TK</span>
 
               <div
                 className="px-5 py-2 mt-5 bg-soft-red text-center text-white rounded-sm cursor-pointer"

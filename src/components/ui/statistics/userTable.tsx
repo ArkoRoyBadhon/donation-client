@@ -15,7 +15,7 @@ const UserTable = ({ specificDonation }: any) => {
           </tr>
         </thead>
         <tbody>
-          {specificDonation &&
+          {specificDonation?.data.length > 0 ?
             specificDonation?.data?.map((item: any) => {
               return (
                 <tr key={item._id}>
@@ -34,7 +34,10 @@ const UserTable = ({ specificDonation }: any) => {
                   </td>
                 </tr>
               );
-            })}
+            })
+          :
+          <div className="py-5 text-center">No Data Found</div>
+          }
         </tbody>
       </table>
     </div>

@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import SkeletonCard from "../skeleton/skeletonCard";
 import TimeAct from "./timeAct";
 import FollowUs from "./followUs";
+import Volunteer from "./volunteer";
 
 const AllHome = () => {
   const { data: session }: any = useSession();
@@ -90,7 +91,9 @@ const AllHome = () => {
         )}
       </div>
 
-      <TimeAct />
+      {/* <TimeAct /> */}
+
+      <Volunteer />
       <FollowUs />
     </div>
   );

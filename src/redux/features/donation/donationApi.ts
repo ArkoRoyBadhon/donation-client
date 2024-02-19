@@ -48,7 +48,7 @@ const donationApi:any = api.injectEndpoints({
     }),
     getUserBasedDonation: builder.query({
       query: () => ({
-        url: `/donation/user-donate`
+        url: `/donation/single-user-donate`
       }),
       providesTags: ["donation"],
     }),

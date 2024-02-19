@@ -7,7 +7,7 @@ const DonationDetailPage = ({ params }: { params: { id: string } }) => {
 
 
   return (
-    <div className="">
+    <div className="min-h-[100vh]">
         <DonationDetail id={params.id} />
     </div>
   );
