@@ -12,6 +12,7 @@ import SkeletonCard from "../skeleton/skeletonCard";
 import TimeAct from "./timeAct";
 import FollowUs from "./followUs";
 import Volunteer from "./volunteer";
+import BlogsSection from "./blogs";
 
 const AllHome = () => {
   const { data: session }: any = useSession();
@@ -61,7 +62,7 @@ const AllHome = () => {
         </div>
       </div>
 
-      <div className="mb-5">
+      {/* <div className="mb-5">
         {isLoading && <div className="py-10"><SkeletonCard /></div> }
         {isSuccess && (
           <>
@@ -89,11 +90,12 @@ const AllHome = () => {
             </div>
           </>
         )}
-      </div>
+      </div> */}
 
-      {/* <TimeAct /> */}
+      <TimeAct />
 
       <Volunteer />
+      <BlogsSection />
       <FollowUs />
     </div>
   );
