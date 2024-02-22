@@ -1,44 +1,57 @@
 "use client";
 import { useCreateUserDonationMutation } from "@/redux/features/donation/donationApi";
+import { useCreateDonationPaymentMutation } from "@/redux/features/order/orderApi";
+// import { useCreateDonationOrderMutation } from "@/redux/features/order/orderApi";
 import { useAppSelector } from "@/redux/hook";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 const ProcedureDonateElem = () => {
   const { donation } = useAppSelector((state) => state.donation);
   const { user } = useAppSelector((state) => state.user);
- const [createUserDonation, {isSuccess, error}] = useCreateUserDonationMutation()
+  const [createDonationPayment, { data: orderData, isSuccess, error }] = useCreateDonationPaymentMutation();
+  // const [createDonationOrder, { data: orderData, isSuccess, error }] = useCreateDonationOrderMutation();
   const [amountVal, setAmountVal] = useState<number>(100);
+
+  const router = useRouter();
 
   const handleProceed = async () => {
     if (amountVal <= 99) {
       toast(`not less than ${amountVal}tk`, {
-        toastId: "procedure"
-      })
+        toastId: "procedure",
+      });
     }
 
     if (amountVal >= 100) {
-
       const donationData = {
-        userId: user?.id,
+        donar_id: user?.id,
+        donar_name: user?.name,
+        donar_email: user?.email,
         donationId: donation?.id,
-        amount: amountVal
-      }
+        amount: amountVal,
+      };
+      // await createDonationOrder(donationData);
+      const res = await createDonationPayment(donationData);
 
-       await createUserDonation(donationData)
+      console.log("",res);
     }
   };
-
+  
   if (isSuccess) {
     toast("Donation payment Successfully", {
-      toastId: "donation-pay"
-    })
+      toastId: "donation-pay",
+    });
+    router.push(orderData?.data)
+    // window.location.replace(orderData?.data);
   }
   if (error) {
     toast("Donation Faied to pay", {
-      toastId: "donation-pay-failed"
-    })
+      toastId: "donation-pay-failed",
+    });
   }
+
+  console.log("order url", orderData?.data);
 
   return (
     <div className="px-5 md:px-30 pt-10">
@@ -61,8 +74,8 @@ const ProcedureDonateElem = () => {
                 placeholder="Amount"
                 className="border outline-none px-2 py-2 mt-2"
                 defaultValue="100"
-              /> <span>TK</span>
-
+              />{" "}
+              <span>TK</span>
               <div
                 className="px-5 py-2 mt-5 bg-soft-red text-center text-white rounded-sm cursor-pointer"
                 onClick={() => handleProceed()}

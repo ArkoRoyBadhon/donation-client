@@ -34,10 +34,10 @@ const DonationDetail = ({ id }: { id: string }) => {
       </div>
       <div className="py-10">
         <h2 className="text-[28px] font-bold mb-3">
-          {donationData?.data.title}
+          {donationData?.data?.title}
         </h2>
         <p className="leading-8 text-justify text-[16px]">
-          {donationData?.data.description}
+          {donationData?.data?.description}
         </p>
       </div>
     </div>
