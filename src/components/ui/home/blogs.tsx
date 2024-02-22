@@ -42,7 +42,7 @@ function PreviousNextMethods(): ReactElement {
     autoplay: true,
     responsive: [
       {
-        breakpoint: 1440,
+        breakpoint: 3000,
         settings: {
           slidesToShow: 3,
         }
